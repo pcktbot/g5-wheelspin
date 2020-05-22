@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>G5 Wheelspins</title>
+    <title>🎁</title>
+    <link href="./favicon.ico" rel="favicon" />
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body class="background-img">
@@ -27,11 +28,19 @@
         </div>
       </section>
       <aside class="aside-wrapper">
+        <audio id="clap">
+          <source src="./clap.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <button class="aside-btn btn clap" data-count="1">
+          👏
+        </button>
       </aside>
     </article>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
     <script src="./winwheel.js"></script>
+    <script src="./confetti.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>

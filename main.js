@@ -3,8 +3,22 @@ const blue = '#0c233f';
 
 const $start = $('#start');
 const $reset = $('#reset');
+const $clappers = $('.clap');
+
+$clappers.each((i, el) => {
+  const count = $(el).attr('data-count');
+  $(el).click((evt) => {
+    evt.preventDefault();
+    for (let c in count) {
+      $clap.play();
+    }
+  })
+});
+
 const $corndog = $('#corndog')[0];
 $corndog.loop = true;
+
+const $clap = $('#clap')[0];
 
 let isSpinning = false;
 
@@ -51,6 +65,7 @@ $reset.click((evt) => {
   isSpinning = false;
   myWheel.rotationAngle = 0;
   myWheel.draw();
+  confetti.remove();
 });
 
 function startSpin() {
@@ -80,5 +95,7 @@ function onFinished(segment) {
   $corndog.currentTime = 0;
   isSpinning = false;
   console.log({ segment });
-  alert(JSON.stringify(segment.text));
+  console.log({ confetti });
+  confetti.start();
+  // alert(JSON.stringify(segment.text));
 }
