@@ -1,65 +1,84 @@
 const red = '#ff0033';
 const blue = '#0c233f';
 
-window.onload = function () {
-  let isSpinning = false;
-  let myWheel = new Winwheel({
-    'numSegments': 8,
-    'outerRadius': 250,
-    'innerRadius': 100,
-    'textFontSize': 16,
-    'textMargin': 0,
-    'segments': [
-      {
-        'fillStyle': red,
-        'textFillStyle': '#ffffff',
-        'textAlignment': 'right',
-        'text': 'segment text'
-      },
-      { 'fillStyle': blue, 'text': 'segment text' },
-      { 'fillStyle': red, 'text': 'segment text' },
-      { 'fillStyle': blue, 'text': 'segment text' },
-      { 'fillStyle': red, 'text': 'segment text' },
-      { 'fillStyle': blue, 'text': 'segment text' },
-      { 'fillStyle': red, 'text': 'segment text' },
-      { 'fillStyle': blue, 'text': 'segment text' }
-    ],
-    'animation': {
-      'type': 'spinToStop',
-      'duration': 5,
-      'spins': 4,
-      'callbackFinished': (segment) => {
-        console.log(segment.fillStyle);
-        segment.fillStyle = '#52be99';
-      }
-    }
-  });
+const $start = $('#start');
+const $reset = $('#reset');
+const $corndog = $('#corndog')[0];
+$corndog.loop = true;
 
-  function toggleSpin(forceFalse = false) {
-    if (forceFalse) {
-      isSpinning = false;
-      console.log('%c forcing false', 'color: red;');
-      myWheel.stopAnimation(false);
-    } else {
-      isSpinning = !isSpinning;
-    }
+let isSpinning = false;
+
+let myWheel = new Winwheel({
+  numSegments: 8,
+  outerRadius: 250,
+  innerRadius: 100,
+  textFontSize: 16,
+  textMargin: 0,
+  segments: [
+    {
+      fillStyle: red,
+      textFillStyle: '#ffffff',
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    { fillStyle: blue, text: 'segment text' },
+    { fillStyle: red, text: 'segment text' },
+    { fillStyle: blue, text: 'segment text' },
+    { fillStyle: red, text: 'segment text' },
+    { fillStyle: blue, text: 'segment text' },
+    { fillStyle: red, text: 'segment text' },
+    { fillStyle: blue, text: 'segment text' }
+  ],
+  animation: {
+    type: 'spinToStop',
+    duration: 10,
+    spins: 6,
+    callbackFinished: onFinished
   }
-  document.getElementById('start').addEventListener('click', (evt) => {
-    evt.preventDefault();
-    console.log({ evt });
-    toggleSpin(true);
+});
+
+
+$start.click((evt) => {
+  evt.preventDefault();
+  startSpin();
+});
+
+$reset.click((evt) => {
+  evt.preventDefault();
+  $corndog.pause();
+  $corndog.currentTime = 0;
+  myWheel.stopAnimation(false);
+  isSpinning = false;
+  myWheel.rotationAngle = 0;
+  myWheel.draw();
+});
+
+function startSpin() {
+  if (!isSpinning) {
+    $corndog.play();
+    myWheel.animation.duration = rdm(9, 11);
+    myWheel.animation.spin = rdm(4, 20);
+    console.log({
+      duration: myWheel.animation.duration,
+      spin: myWheel.animation.spin
+    });
     myWheel.startAnimation();
-  });
-  document.getElementById('stop').addEventListener('click', (evt) => {
-    evt.preventDefault();
-    toggleSpin(true);
-    myWheel.stopAnimation(false);
-  })
-  document.getElementById('reset').addEventListener('click', (evt) => {
-    evt.preventDefault();
-    toggleSpin(true);
-    myWheel.stopAnimation(false);
-    myWheel.rotationAngle = 0;
-    myWheel.draw();
-  });
-};
+    isSpinning = true;
+  }
+}
+
+function rdm(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function onLoad() {}
+
+function onFinished(segment) {
+  $corndog.pause();
+  $corndog.currentTime = 0;
+  isSpinning = false;
+  console.log({ segment });
+  alert(JSON.stringify(segment.text));
+}

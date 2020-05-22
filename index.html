@@ -4,28 +4,34 @@
     <title>G5 Wheelspins</title>
     <link href="./style.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="background-img">
     <article class="wrapper">
       <section class="wheel-wrapper">
         <header class="wheel-header">
+          <audio id="corndog">
+            <source src="./corndog.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
           <button id="start" class="header-btn btn">
             Start
           </button>
-          <button id="stop" class="header-btn btn">
-            Stop
+          <button id="reset" class="header-btn btn">
+            Reset
           </button>
         </header>
         <div class="wheel-container">
           <div class="wheel-marker"></div>
-          <canvas id="canvas" width="500" height="500"></canvas>
+          <canvas id="canvas" width="500" height="500">
+            Your browser does not support the canvas element.
+          </canvas>
         </div>
       </section>
       <aside class="aside-wrapper">
-        <button id="reset" class="aside-btn btn">Reset</button>
       </aside>
     </article>
-    <script src="./winwheel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="./winwheel.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>

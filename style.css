@@ -50,3 +50,6 @@ body {
   color: white;
   padding: 1.25em 1.5em;
 }
+.active {
+  background: var(--blue);
+}
