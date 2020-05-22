@@ -1,13 +1,12 @@
 const red = '#ff0033';
 const blue = '#0c233f';
 
-
 window.onload = function () {
   let isSpinning = false;
   let myWheel = new Winwheel({
     'numSegments': 8,
     'outerRadius': 250,
-    'innerRadius': 25,
+    'innerRadius': 100,
     'textFontSize': 16,
     'textMargin': 0,
     'segments': [

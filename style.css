@@ -36,13 +36,14 @@ body {
 }
 .wheel-marker {
   position: absolute;
-  top: 50%;
+  top: 0%;
   left: 50%;
-  width: 200%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid white;
   transform: translate(-50%, -50%) rotate(0deg);
-  z-index: -1;
-  filter: blur(15px);
-  /* animation: 2000ms myRotate linear infinite; */
 }
 .btn {
   background: var(--red);
