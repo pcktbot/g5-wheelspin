@@ -3,21 +3,13 @@ const blue = '#0c233f';
 
 const $start = $('#start');
 const $reset = $('#reset');
-const $clappers = $('.clap');
-
-$clappers.each((i, el) => {
-  const count = $(el).attr('data-count');
-  $(el).click((evt) => {
-    evt.preventDefault();
-    for (let c in count) {
-      $clap.play();
-    }
-  })
-});
+const $clapBtn = $('#clap-btn');
+const $clapCount = $('#clap-count');
 
 const $corndog = $('#corndog')[0];
 $corndog.loop = true;
 
+const $cheer = $('#cheer')[0];
 const $clap = $('#clap')[0];
 
 let isSpinning = false;
@@ -55,6 +47,12 @@ let myWheel = new Winwheel({
 $start.click((evt) => {
   evt.preventDefault();
   startSpin();
+});
+
+$clapBtn.click((evt) => {
+  evt.preventDefault();
+  let count = $clapCount.val();
+  $clap.play();
 });
 
 $reset.click((evt) => {
@@ -95,7 +93,7 @@ function onFinished(segment) {
   $corndog.currentTime = 0;
   isSpinning = false;
   console.log({ segment });
-  console.log({ confetti });
   confetti.start();
+  $cheer.play();
   // alert(JSON.stringify(segment.text));
 }
