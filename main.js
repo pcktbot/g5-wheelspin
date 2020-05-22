@@ -1,5 +1,7 @@
-const red = '#ff0033';
-const blue = '#0c233f';
+const primary = '#0d2240';
+const secondary = '#7c98ab';
+const tertiary = '#e94f3e';
+const pale = '#e6ecf0';
 
 const $start = $('#start');
 const $reset = $('#reset');
@@ -8,32 +10,72 @@ const $clapCount = $('#clap-count');
 
 const $corndog = $('#corndog')[0];
 $corndog.loop = true;
-
 const $cheer = $('#cheer')[0];
 const $clap = $('#clap')[0];
 
 let isSpinning = false;
 
 let myWheel = new Winwheel({
-  numSegments: 8,
+  numSegments: 9,
   outerRadius: 250,
   innerRadius: 100,
   textFontSize: 16,
   textMargin: 0,
   segments: [
     {
-      fillStyle: red,
-      textFillStyle: '#ffffff',
+      fillStyle: primary,
+      textFillStyle: pale,
       textAlignment: 'right',
       text: 'segment text'
     },
-    { fillStyle: blue, text: 'segment text' },
-    { fillStyle: red, text: 'segment text' },
-    { fillStyle: blue, text: 'segment text' },
-    { fillStyle: red, text: 'segment text' },
-    { fillStyle: blue, text: 'segment text' },
-    { fillStyle: red, text: 'segment text' },
-    { fillStyle: blue, text: 'segment text' }
+    {
+      fillStyle: secondary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: tertiary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: primary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: secondary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: tertiary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: primary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: secondary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    },
+    {
+      fillStyle: tertiary,
+      textFillStyle: pale,
+      textAlignment: 'right',
+      text: 'segment text'
+    }
   ],
   animation: {
     type: 'spinToStop',

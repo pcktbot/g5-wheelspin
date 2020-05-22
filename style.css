@@ -1,17 +1,21 @@
 :root {
   --red: #ff0033;
   --blue: #0c233f;
+  --primary: #0d2240;
+  --secondary: #7c98ab;
+  --tertiary: #e94f3e;
+  --quaternary: #efe041;
+  --pale: #e6ecf0;
 }
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
-  /* border: 1px solid var(--red); */
+  border: 1px solid var(--tertiary);
 }
 input[type=range] {
   -webkit-appearance: none;
-  /* width: 100%; */
   background: transparent;
 }
 input[type=range]::-webkit-slider-thumb {
