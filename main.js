@@ -7,6 +7,8 @@ const $start = $('#start');
 const $reset = $('#reset');
 const $clapBtn = $('#clap-btn');
 const $clapCount = $('#clap-count');
+const $subtractCount = $('#subtract');
+const $addCount = $('#add');
 
 const $corndog = $('#corndog')[0];
 $corndog.loop = true;
@@ -14,6 +16,8 @@ const $cheer = $('#cheer')[0];
 const $clap = $('#clap')[0];
 
 let isSpinning = false;
+let count = 1;
+$clapCount.text(count);
 
 let myWheel = new Winwheel({
   numSegments: 9,
@@ -91,9 +95,20 @@ $start.click((evt) => {
   startSpin();
 });
 
+$subtractCount.click((evt) => {
+  evt.preventDefault();
+  count = (count <= 0) ? 0 : count - 1;
+  $clapCount.text(count);
+});
+
+$addCount.click((evt) => {
+  evt.preventDefault();
+  count = (count >= 15) ? 15 : count + 1;
+  $clapCount.text(count);
+});
+
 $clapBtn.click((evt) => {
   evt.preventDefault();
-  let count = $clapCount.val();
   $clap.play();
 });
 
@@ -101,8 +116,8 @@ $reset.click((evt) => {
   evt.preventDefault();
   $corndog.pause();
   $corndog.currentTime = 0;
-  myWheel.stopAnimation(false);
   isSpinning = false;
+  myWheel.stopAnimation(false);
   myWheel.rotationAngle = 0;
   myWheel.draw();
   confetti.remove();
