@@ -109,7 +109,19 @@ $addCount.click((evt) => {
 
 $clapBtn.click((evt) => {
   evt.preventDefault();
-  $clap.play();
+  let i = count;
+  const loop = setInterval(() => {
+    if (i > 0) {
+      $clap.pause();
+      $clap.play();
+      i--;
+      // console.log({ i });
+    } else {
+      count++;
+      $clapCount.text(count);
+      clearInterval(loop);
+    }
+  }, 1500);
 });
 
 $reset.click((evt) => {
