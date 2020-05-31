@@ -36,20 +36,44 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
-/* .wrapper * {
-  border: 1px solid red;
-} */
 .wheel-wrapper {
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
   position: relative;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
 }
-.wheel-canvas {
-  /* width: 100%; */
-  margin: 0 auto;
+.wheel-container {
   position: relative;
+  width: 100%;
+}
+.wheel-marker {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid var(--primary);
+  border-bottom: none;
+  transform: translate(-50%, -100px) rotate(0deg);
+}
+.wheel-container > canvas {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.wheel-header {
+  width: 100%;
+  display: flex;
+  z-index: 1;
+}
+.wheel-cluster {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  transform: translate(0%, 100%) rotate(45deg);
 }
 .aside-wrapper {
   display: grid;
@@ -84,39 +108,12 @@ body {
   border: 1px solid var(--primary);
   border-radius: 50%;
 }
-.wheel-header {
-  width: 100%;
-  display: flex;
-  z-index: 1;
-  /* background-color: var(--quaternary); */
-}
 .btn-group {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
-.wheel-container {
-  position: relative;
-  width: 100%;
-}
-.wheel-marker {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid var(--primary);
-  border-bottom: none;
-  transform: translate(-50%, -100px) rotate(0deg);
-}
-.wheel-cluster {
-  position: absolute;
-  right: 0%;
-  top: 0%;
-  transform: translate(0%, 100%) rotate(45deg);
-}
+
 .cluster-btn {
   border: 1px solid var(--quaternary);
   background-color: var(--quaternary);
@@ -139,10 +136,15 @@ body {
 .header-btn {
   background-color: white;
   font-family: var(--display);
-  font-size: 1.2em;
+  font-size: 1.5em;
   color: var(--primary);
   border: 1px solid var(--primary);
   padding: 0.75em 1.75em;
+  transition: 200ms ease-in-out;
+}
+.header-btn:hover {
+  color: white;
+  background-color: var(--primary);
 }
 .active {
   background: var(--primary);

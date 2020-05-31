@@ -26,7 +26,6 @@ $clapCount.text(count);
 
 let myWheel = new Winwheel({
   numSegments: 10,
-  // centerX: 500,
   outerRadius: 350,
   innerRadius: 100,
   textFontSize: 18,
@@ -132,6 +131,11 @@ $clapBtn.click((evt) => {
   }, 800);
 });
 
+$cheerBtn.click((evt) => {
+  evt.preventDefault();
+  $cheer.play();
+});
+
 $reset.click((evt) => {
   evt.preventDefault();
   $corndog.pause();
@@ -145,7 +149,6 @@ $reset.click((evt) => {
 
 $confettiBtn.click((evt) => {
   evt.preventDefault();
-  // confetti.gradient = true;
   $confettiBtn.toggleClass('active');
   (confetti.isRunning())
     ? confetti.stop()
@@ -159,14 +162,14 @@ $modalDismiss.click((evt) => {
 });
 
 function startSpin() {
+  myWheel.stopAnimation(false);
+  myWheel.rotationAngle = 0;
+  myWheel.draw();
   if (!isSpinning) {
     $corndog.play();
+
     myWheel.animation.duration = rdm(9, 11);
     myWheel.animation.spin = rdm(4, 50);
-    // console.log({
-    //   duration: myWheel.animation.duration,
-    //   spin: myWheel.animation.spin
-    // });
     myWheel.startAnimation();
     isSpinning = true;
   }
@@ -186,7 +189,7 @@ function onFinished(segment) {
   isSpinning = false;
   console.log({ segment });
   confetti.start();
-  // $cheer.play();
+  $cheer.play();
   setTimeout(() => {
     confetti.stop();
   }, 3000);
