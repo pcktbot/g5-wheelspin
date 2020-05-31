@@ -8,7 +8,12 @@ const $reset = $('#reset');
 const $clapBtn = $('#clap-btn');
 const $clapCount = $('#clap-count');
 const $subtractCount = $('#subtract');
+const $confettiBtn = $('#confetti');
+const $modalDismiss = $('#modal-dismiss');
+const $cheerBtn = $('#cheer');
 const $addCount = $('#add');
+const $modal = $('#modal');
+const $modalFullText = $('#full-text');
 
 const $corndog = $('#corndog')[0];
 $corndog.loop = true;
@@ -20,65 +25,66 @@ let count = 1;
 $clapCount.text(count);
 
 let myWheel = new Winwheel({
-  numSegments: 9,
-  outerRadius: 250,
+  numSegments: 10,
+  // centerX: 500,
+  outerRadius: 350,
   innerRadius: 100,
-  textFontSize: 16,
-  textMargin: 0,
+  textFontSize: 18,
+  textMargin: 20,
+  drawText: true,
+  textOrientation: 'curved',
+  textAlignment: 'outer',
+  textFillStyle: pale,
   segments: [
     {
       fillStyle: primary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      text: '$100',
+      fullText: 'Outdoor Adventure $100'
     },
     {
-      fillStyle: secondary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      fillStyle: '#7aa0bf',
+      text: 'PTO',
+      fullText: 'Make It Awesome - One Day PTO'
     },
     {
-      fillStyle: tertiary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      fillStyle: '#ee725f',
+      text: '$100',
+      fullText: 'Outdoor Adventure $100'
     },
     {
-      fillStyle: primary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      fillStyle: '#152043',
+      text: '$50',
+      fullText: 'Do the right thing'
     },
     {
-      fillStyle: secondary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      fillStyle: '#4c679d',
+      text: '$50',
+      fullText: 'Downtown Dollars'
     },
     {
       fillStyle: tertiary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      text: '$100',
+      fullText: 'Do the Right Thing'
     },
     {
-      fillStyle: primary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
-    },
-    {
-      fillStyle: secondary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      fillStyle: '#3c6c92',
+      text: '$50',
+      fullText: 'Pay It Forward — $50 Donaition to Charity'
     },
     {
       fillStyle: tertiary,
-      textFillStyle: pale,
-      textAlignment: 'right',
-      text: 'segment text'
+      text: 'PTO',
+      fullText: 'Make It Awesome - One Day PTO'
+    },
+    {
+      fillStyle: secondary,
+      text: '$100',
+      fullText: 'Out of things'
+    },
+    {
+      fillStyle: tertiary,
+      text: 'Freedom',
+      fullText: 'Yes Freedom'
     }
   ],
   animation: {
@@ -110,6 +116,7 @@ $addCount.click((evt) => {
 $clapBtn.click((evt) => {
   evt.preventDefault();
   let i = count;
+  $clapBtn.addClass('is-active');
   const loop = setInterval(() => {
     if (i > 0) {
       $clap.pause();
@@ -119,9 +126,10 @@ $clapBtn.click((evt) => {
     } else {
       count++;
       $clapCount.text(count);
+      $clapBtn.removeClass('is-active');
       clearInterval(loop);
     }
-  }, 1500);
+  }, 800);
 });
 
 $reset.click((evt) => {
@@ -135,15 +143,30 @@ $reset.click((evt) => {
   confetti.remove();
 });
 
+$confettiBtn.click((evt) => {
+  evt.preventDefault();
+  // confetti.gradient = true;
+  $confettiBtn.toggleClass('active');
+  (confetti.isRunning())
+    ? confetti.stop()
+    : confetti.start();
+});
+
+$modalDismiss.click((evt) => {
+  evt.preventDefault();
+  $modal.toggleClass('is-hidden');
+  $modalDismiss.toggleClass('active');
+});
+
 function startSpin() {
   if (!isSpinning) {
     $corndog.play();
     myWheel.animation.duration = rdm(9, 11);
-    myWheel.animation.spin = rdm(4, 20);
-    console.log({
-      duration: myWheel.animation.duration,
-      spin: myWheel.animation.spin
-    });
+    myWheel.animation.spin = rdm(4, 50);
+    // console.log({
+    //   duration: myWheel.animation.duration,
+    //   spin: myWheel.animation.spin
+    // });
     myWheel.startAnimation();
     isSpinning = true;
   }
@@ -163,6 +186,9 @@ function onFinished(segment) {
   isSpinning = false;
   console.log({ segment });
   confetti.start();
-  $cheer.play();
-  // alert(JSON.stringify(segment.text));
+  // $cheer.play();
+  setTimeout(() => {
+    confetti.stop();
+  }, 3000);
+  $modalFullText.text(segment.fullText);
 }
