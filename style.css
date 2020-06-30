@@ -146,6 +146,14 @@ body {
   color: white;
   background-color: var(--primary);
 }
+.header-btn.is-gradient {
+  background: radial-gradient(
+    var(--tertiary),
+    #ef715f
+  );
+  color: white;
+  border-color: white;
+}
 .active {
   background: var(--primary);
   border-color: var(--primary);

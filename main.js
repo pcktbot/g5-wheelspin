@@ -10,7 +10,7 @@ const $clapCount = $('#clap-count');
 const $subtractCount = $('#subtract');
 const $confettiBtn = $('#confetti');
 const $modalDismiss = $('#modal-dismiss');
-const $cheerBtn = $('#cheer');
+const $cheerBtn = $('#cheer-btn');
 const $addCount = $('#add');
 const $modal = $('#modal');
 const $modalFullText = $('#full-text');
@@ -30,60 +30,60 @@ let myWheel = new Winwheel({
   innerRadius: 100,
   textFontSize: 18,
   textMargin: 20,
-  drawText: true,
-  textOrientation: 'curved',
+  // drawText: true,
+  // textOrientation: 'curved',
   textAlignment: 'outer',
   textFillStyle: pale,
   segments: [
     {
       fillStyle: primary,
-      text: '$100',
-      fullText: 'Outdoor Adventure $100'
+      text: '$50 Cash',
+      fullText: 'Really, $50 Cash!'
     },
     {
       fillStyle: '#7aa0bf',
-      text: 'PTO',
-      fullText: 'Make It Awesome - One Day PTO'
+      text: 'Amazon GC',
+      fullText: 'Amazon Gift Card $50'
     },
     {
       fillStyle: '#ee725f',
-      text: '$100',
-      fullText: 'Outdoor Adventure $100'
+      text: 'Old Mill GC',
+      fullText: 'Old Mill Gift Card $50'
     },
     {
       fillStyle: '#152043',
-      text: '$50',
-      fullText: 'Do the right thing'
+      text: 'Lunch',
+      fullText: 'Lunch with a Coworker'
     },
     {
       fillStyle: '#4c679d',
-      text: '$50',
-      fullText: 'Downtown Dollars'
+      text: 'Movie Night',
+      fullText: 'Movie Night $50'
     },
     {
       fillStyle: tertiary,
-      text: '$100',
-      fullText: 'Do the Right Thing'
+      text: '$50',
+      fullText: 'Outdoor Adventure $50'
     },
     {
       fillStyle: '#3c6c92',
-      text: '$50',
-      fullText: 'Pay It Forward — $50 Donaition to Charity'
+      text: 'Brewery',
+      fullText: 'Eat @ Local Brewery $50'
+    },
+    {
+      fillStyle: tertiary,
+      text: 'Grab Bag',
+      fullText: 'Gift Card Grab Bag'
+    },
+    {
+      fillStyle: secondary,
+      text: 'Downtown $$',
+      fullText: 'Downtown Dollars $50'
     },
     {
       fillStyle: tertiary,
       text: 'PTO',
-      fullText: 'Make It Awesome - One Day PTO'
-    },
-    {
-      fillStyle: secondary,
-      text: '$100',
-      fullText: 'Out of things'
-    },
-    {
-      fillStyle: tertiary,
-      text: 'Freedom',
-      fullText: 'Yes Freedom'
+      fullText: 'One Day PTO'
     }
   ],
   animation: {
@@ -123,16 +123,19 @@ $clapBtn.click((evt) => {
       i--;
       // console.log({ i });
     } else {
-      count++;
-      $clapCount.text(count);
+      // count++;
+      // $clapCount.text(count);
       $clapBtn.removeClass('is-active');
       clearInterval(loop);
     }
-  }, 800);
+  }, 700);
 });
 
 $cheerBtn.click((evt) => {
   evt.preventDefault();
+  console.log({ evt });
+  $cheer.pause();
+  $cheer.currentTime = 0;
   $cheer.play();
 });
 
@@ -167,7 +170,7 @@ function startSpin() {
   myWheel.draw();
   if (!isSpinning) {
     $corndog.play();
-
+    $start.addClass('is-gradient');
     myWheel.animation.duration = rdm(9, 11);
     myWheel.animation.spin = rdm(4, 50);
     myWheel.startAnimation();
@@ -185,6 +188,7 @@ function onLoad() {}
 
 function onFinished(segment) {
   $corndog.pause();
+  $start.removeClass('is-gradient');
   $corndog.currentTime = 0;
   isSpinning = false;
   console.log({ segment });
