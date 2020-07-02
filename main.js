@@ -127,21 +127,17 @@ $clapBtn.click((evt) => {
       $clap.pause();
       $clap.play();
       i--;
-      // console.log({ i });
     } else {
-      // count++;
-      // $clapCount.text(count);
       $clapBtn.removeClass('is-active');
       clearInterval(loop);
     }
-  }, 700);
+  }, 750);
 });
 
 $cheerBtn.click((evt) => {
   evt.preventDefault();
-  console.log({ evt });
-  $cheer.pause();
-  $cheer.currentTime = 0;
+  // $cheer.pause();
+  // $cheer.currentTime = 0;
   $cheer.play();
 });
 
@@ -197,7 +193,6 @@ function onFinished(segment) {
   $start.removeClass('is-gradient');
   $corndog.currentTime = 0;
   isSpinning = false;
-  console.log({ segment });
   confetti.start();
   $cheer.play();
   setTimeout(() => {
