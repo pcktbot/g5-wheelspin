@@ -1,6 +1,8 @@
 const primary = '#0d2240';
 const secondary = '#7c98ab';
+const secondaryLight = '#b3aeab';
 const tertiary = '#e94f3e';
+const quaternary = '#efe041';
 const pale = '#e6ecf0';
 
 const $start = $('#start');
@@ -28,7 +30,7 @@ let myWheel = new Winwheel({
   numSegments: 10,
   outerRadius: 350,
   innerRadius: 100,
-  textFontSize: 18,
+  textFontSize: 24,
   textMargin: 20,
   // drawText: true,
   // textOrientation: 'curved',
@@ -41,49 +43,53 @@ let myWheel = new Winwheel({
       fullText: 'Really, $50 Cash!'
     },
     {
-      fillStyle: '#7aa0bf',
+      fillStyle: tertiary,
       text: 'Amazon GC',
       fullText: 'Amazon Gift Card $50'
     },
     {
-      fillStyle: '#ee725f',
+      fillStyle: quaternary,
+      textFillStyle: primary,
       text: 'Old Mill GC',
       fullText: 'Old Mill Gift Card $50'
     },
     {
-      fillStyle: '#152043',
+      fillStyle: secondary,
       text: 'Lunch',
       fullText: 'Lunch with a Coworker'
     },
     {
-      fillStyle: '#4c679d',
+      fillStyle: secondaryLight,
+      textFillStyle: primary,
       text: 'Movie Night',
       fullText: 'Movie Night $50'
     },
     {
-      fillStyle: tertiary,
+      fillStyle: primary,
       text: '$50',
       fullText: 'Outdoor Adventure $50'
-    },
-    {
-      fillStyle: '#3c6c92',
-      text: 'Brewery',
-      fullText: 'Eat @ Local Brewery $50'
-    },
-    {
-      fillStyle: tertiary,
-      text: 'Grab Bag',
-      fullText: 'Gift Card Grab Bag'
-    },
-    {
-      fillStyle: secondary,
-      text: 'Downtown $$',
-      fullText: 'Downtown Dollars $50'
     },
     {
       fillStyle: tertiary,
       text: 'PTO',
       fullText: 'One Day PTO'
+    },
+    {
+      fillStyle: quaternary,
+      textFillStyle: primary,
+      text: 'Brewery',
+      fullText: 'Eat @ Local Brewery $50'
+    },
+    {
+      fillStyle: secondary,
+      text: 'Grab Bag',
+      fullText: 'Gift Card Grab Bag'
+    },
+    {
+      fillStyle: secondaryLight,
+      textFillStyle: primary,
+      text: 'Downtown $$',
+      fullText: 'Downtown Dollars $50'
     }
   ],
   animation: {
