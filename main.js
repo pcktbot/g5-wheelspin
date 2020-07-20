@@ -44,29 +44,29 @@ let myWheel = new Winwheel({
     },
     {
       fillStyle: tertiary,
-      text: 'Amazon GC',
+      text: 'Amazon GC $50',
       fullText: 'Amazon Gift Card $50'
     },
     {
       fillStyle: quaternary,
       textFillStyle: primary,
-      text: 'Old Mill GC',
-      fullText: 'Old Mill Gift Card $50'
+      text: '$50 Cash',
+      fullText: '$50 Cold, Hard Cash? Yes!'
     },
     {
       fillStyle: secondary,
-      text: 'Lunch',
-      fullText: 'Lunch with a Coworker'
+      text: 'Amazon GC $50',
+      fullText: 'Amazon Gift Card $50'
     },
     {
       fillStyle: secondaryLight,
       textFillStyle: primary,
-      text: 'Movie Night',
-      fullText: 'Movie Night $50'
+      text: '$50 GC Your Choice',
+      fullText: '$50 Gift Card of your Choice!'
     },
     {
       fillStyle: primary,
-      text: '$50',
+      text: '$50 Adventure',
       fullText: 'Outdoor Adventure $50'
     },
     {
@@ -77,19 +77,19 @@ let myWheel = new Winwheel({
     {
       fillStyle: quaternary,
       textFillStyle: primary,
-      text: 'Brewery',
-      fullText: 'Eat @ Local Brewery $50'
+      text: 'Eat @ Local',
+      fullText: 'Brewery or Restaurant of your Choice'
     },
     {
       fillStyle: secondary,
-      text: 'Grab Bag',
-      fullText: 'Gift Card Grab Bag'
+      text: '$50 GC Your Choice',
+      fullText: '$50 Gift Card of your Choice!'
     },
     {
       fillStyle: secondaryLight,
       textFillStyle: primary,
-      text: 'Downtown $$',
-      fullText: 'Downtown Dollars $50'
+      text: '$50 Grocery GC',
+      fullText: '$50 for Groceries!'
     }
   ],
   animation: {
