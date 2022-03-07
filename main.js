@@ -1,8 +1,8 @@
 const primary = '#0d2240';
-const secondary = '#7c98ab';
-const secondaryLight = '#b3aeab';
-const tertiary = '#e94f3e';
-const quaternary = '#efe041';
+const secondary = '#5a6770ff';
+const secondaryLight = '#d44b61ff';
+const tertiary = '#c3c6c9ff';
+const quaternary = '#343736ff';
 const pale = '#e6ecf0';
 
 const $start = $('#start');
@@ -39,8 +39,8 @@ let myWheel = new Winwheel({
   segments: [
     {
       fillStyle: primary,
-      text: '$50 Cash',
-      fullText: 'Really, $50 Cash!'
+      text: '$50 Target gift card',
+      fullText: 'Really, $50 Target GC!'
     },
     {
       fillStyle: tertiary,
@@ -49,9 +49,9 @@ let myWheel = new Winwheel({
     },
     {
       fillStyle: quaternary,
-      textFillStyle: primary,
-      text: '$50 Cash',
-      fullText: '$50 Cold, Hard Cash? Yes!'
+      // textFillStyle: primary,
+      text: '$50 Target gift card',
+      fullText: 'Really, $50 Target GC!'
     },
     {
       fillStyle: secondary,
@@ -71,14 +71,14 @@ let myWheel = new Winwheel({
     },
     {
       fillStyle: tertiary,
-      text: 'PTO',
-      fullText: 'One Day PTO'
+      text: '$50 Visa Gift Card',
+      fullText: '$50 Visa Gift Card'
     },
     {
       fillStyle: quaternary,
-      textFillStyle: primary,
-      text: 'Eat @ Local',
-      fullText: 'Brewery or Restaurant of your Choice'
+      // textFillStyle: primary,
+      text: '$50 Restaurant GC',
+      fullText: 'Restaurant of your Choice'
     },
     {
       fillStyle: secondary,
